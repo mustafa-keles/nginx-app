@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: acrdemo-localdocker-deployment
+  name: nginx-deploy
   labels:
-    app: acrdemo-localdocker
+    app: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: acrdemo-localdocker
+      app: nginx
   template:
     metadata:
       labels:
-        app: acrdemo-localdocker
+        app: nginx
     spec:
       containers:
-        - name: acrdemo-localdocker
-          image: mustafakeles.azurecr.io/app1/kube-nginx-acr:v1
+        - name: nginx
+          image: ghcr.io/mustafa-keles/nginx-app:main
           imagePullPolicy: Always
           ports:
             - containerPort: 80
