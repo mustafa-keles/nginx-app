@@ -15,7 +15,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name: Upload a Build Artifact
+    - name: changing permission
+      run: sudo chown -R $USER:$GROUP ~/.npm
+    - name: Upload a Build Artifact  
       uses: actions/upload-artifact@v3.1.1
       with:
     # Artifact name
