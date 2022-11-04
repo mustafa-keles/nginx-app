@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: ghcr.io/mustafa-keles/nginx-app:latest
+          image: ghcr.io/mustafa-keles/nginx-app:main
           imagePullPolicy: Always
           ports:
             - containerPort: 80
