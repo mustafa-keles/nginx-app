@@ -1,11 +1,10 @@
-name: Publish Docker Image
+name: Build&Publish Docker Image to GHCR.io
 
 on:
-  push:
-    branches: [ main ]
-  release:
-    types:
-      - published
+  pull_request:
+    branches:    
+      - 'main'
+  
         
 jobs:
 
