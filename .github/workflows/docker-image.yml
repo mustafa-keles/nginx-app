@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
+      id: build
       run: docker build . --file Dockerfile --tag mustafakeles/nginx-app:$(date +%s)
       
     - name: Login to Docker Hub
@@ -23,5 +24,5 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
-    - run: docker push mustafakeles/nginx-app:$(date +%s)
+    - run: docker push ${{ steps.build.output }}
   
