@@ -39,6 +39,6 @@ jobs:
           DOCKER_BUILDKIT: 1
         with:
           context: .
-          push: true
+          load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
