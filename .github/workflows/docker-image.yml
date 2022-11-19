@@ -1,22 +1,22 @@
-name: Docker Image CI
+name: Build and publish to Docker hub
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+  # push:
+      #branches: [ "main" ]
+ 
 
 jobs:
 
-  build:
+  build-and-push-to-docker-hub:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag mustafakeles/nginx-app:latest
+      run: docker build . --file Dockerfile --tag mustafakeles/nginx-app:$(date +%s)
     - name: login Docker
-      run: docker login --username mustafakeles --password AE1040mt!
-    - run: docker push mustafakeles/nginx-app:latest
+      run: docker login --username mustafakeles --password ${{ .Secrets.DOCKER_PASSWORD }}
+    - run: docker push mustafakeles/nginx-app:$(date +%s)
   
