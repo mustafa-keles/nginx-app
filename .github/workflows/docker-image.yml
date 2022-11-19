@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag mustafakeles/nginx-app:$(date +%s)
     - name: login Docker
-      run: docker login --username mustafakeles --password ${{ .Secrets.DOCKER_PASSWORD }}
+      run: docker login --username mustafakeles --password ${{ .secrets.DOCKER_PASSWORD }}
     - run: docker push mustafakeles/nginx-app:$(date +%s)
   
